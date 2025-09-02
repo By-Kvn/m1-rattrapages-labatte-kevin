@@ -1,20 +1,14 @@
+// Chargement du modèle Toxicity
+let toxicityModel = null;
+const toxicityThreshold = 0.8; // seuil de confiance
 
-// Liste de mots pour l'analyse de sentiment
-const positiveWords = ["bien", "heureux", "super", "génial", "cool", "merci", "bravo", "content", "satisfait", "excellent", "parfait", "top", "réussi", "amour", "joie", "sympa"];
-const negativeWords = ["nul", "triste", "déçu", "mauvais", "dommage", "problème", "raté", "fâché", "colère", "horrible", "pire", "fatigué", "stress", "peur", "détesté", "erreur"];
+toxicity.load(toxicityThreshold).then(model => {
+	toxicityModel = model;
+	console.log("Modèle Toxicity chargé.");
+}).catch(err => {
+	console.error("Erreur de chargement du modèle Toxicity:", err);
+});
 
-// Fonction d'analyse de sentiment
-function analyzeSentiment(text) {
-	let score = 0;
-	const words = text.toLowerCase().split(/\W+/);
-	words.forEach(word => {
-		if (positiveWords.includes(word)) score++;
-		if (negativeWords.includes(word)) score--;
-	});
-	if (score > 0) return "positif";
-	if (score < 0) return "négatif";
-	return "neutre";
-}
 
 // Gestion du formulaire
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,15 +24,57 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 		// Analyse du texte
-		const sentiment = analyzeSentiment(text);
-		let suggestion = "";
-		if (sentiment === "positif") {
-			suggestion = "😊 Votre texte semble positif ! Continuez comme ça.";
-		} else if (sentiment === "négatif") {
-			suggestion = "😕 Votre texte semble négatif. Besoin d'encouragement ? Courage !";
+	result.textContent = `Analyse Toxicity en cours...`;
+		// Analyse Toxicity (asynchrone)
+		if (toxicityModel) {
+			toxicityModel.classify([text]).then(predictions => {
+				let tags = [];
+				predictions.forEach(pred => {
+					if (pred.results[0].match) {
+						tags.push(pred.label);
+					}
+				});
+				if (tags.length > 0) {
+					// Suggestions personnalisées selon le tag
+					let advice = "";
+					let icons = {
+						insult: "🚫",
+						threat: "⚠️",
+						toxicity: "☠️",
+						severe_toxicity: "🔥",
+						identity_attack: "👤",
+						sexual_explicit: "🔞",
+						obscene: "🤬"
+					};
+					if (tags.includes("insult")) advice += "Essayez d'utiliser un langage plus respectueux. ";
+					if (tags.includes("threat")) advice += "Les menaces ne sont pas tolérées. ";
+					if (tags.includes("toxicity")) advice += "Attention à la toxicité dans vos propos. ";
+					if (tags.includes("severe_toxicity")) advice += "Ce message est très toxique, veuillez le reformuler. ";
+					if (tags.includes("identity_attack")) advice += "Respectez l'identité des autres. ";
+					if (tags.includes("sexual_explicit")) advice += "Le contenu explicite n'est pas approprié ici. ";
+					if (tags.includes("obscene")) advice += "Le langage obscène n'est pas autorisé. ";
+					// Affichage visuel amélioré
+					result.innerHTML = `
+						<div style='background:#ffeaea;border:2px solid #d32f2f;padding:16px;border-radius:8px;'>
+							<div style='margin-bottom:8px;'>
+								${tags.map(t=>`<span style='display:inline-block;background:#d32f2f;color:#fff;padding:4px 10px;border-radius:12px;margin-right:6px;font-size:1rem;'>${icons[t]||"❗"} ${t.replace(/_/g,' ')}</span>`).join(' ')}
+							</div>
+							<div style='font-weight:bold;color:#d32f2f;margin-bottom:8px;'>Toxicité détectée !</div>
+							<div style='color:#333;margin-bottom:8px;'>${advice}</div>
+						</div>
+					`;
+				} else {
+					result.innerHTML = `
+						<div style='background:#eafbe7;border:2px solid #388e3c;padding:16px;border-radius:8px;'>
+							<span style='color:#388e3c;font-weight:bold;font-size:1.1rem;'>✅ Aucune toxicité détectée.</span>
+						</div>
+					`;
+				}
+			}).catch(err => {
+				result.textContent = `Langue détectée : ${language}\nErreur d'analyse Toxicity.`;
+			});
 		} else {
-			suggestion = "😐 Texte neutre. Essayez d'exprimer une émotion ou une idée !";
+			result.textContent = `Langue détectée : ${language}\nModèle Toxicity non chargé.`;
 		}
-		result.textContent = suggestion;
 	});
 });

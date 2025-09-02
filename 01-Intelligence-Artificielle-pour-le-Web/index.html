@@ -6,13 +6,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>IA pour le Web</title>
 	<link rel="stylesheet" href="styles.css">
+	<!-- Ajout du CDN TensorFlow.js -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.16.0/dist/tf.min.js"></script>
+	<!-- Ajout du modèle Toxicity -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity@1.2.2/dist/toxicity.min.js"></script>
 </head>
 <body>
 	<div class="container">
-		<h1>Analyse de texte avec IA</h1>
+		<h1 class="ia-title">Analyse de toxicité de texte (anglais)</h1>
+		<p class="ia-instructions">
+			<b>Instructions :</b> Saisissez un texte <span class="ia-anglais">en anglais</span>.<br>
+			L’IA détectera automatiquement les propos toxiques, insultes, menaces, etc.<br>
+			<span class="ia-exemples">Exemples : “You are stupid.”, “Thank you for your help.”</span>
+		</p>
 		<form id="ia-form">
-			<label for="user-input">Entrez votre texte :</label>
-			<textarea id="user-input" rows="4" placeholder="Tapez ici..."></textarea>
+			<label for="user-input">Entrez votre texte en anglais :</label>
+			<textarea id="user-input" rows="4" placeholder="Type your text in English..."></textarea>
 			<button type="submit">Analyser</button>
 		</form>
 		<div id="result"></div>

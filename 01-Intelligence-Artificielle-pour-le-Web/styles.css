@@ -1,3 +1,26 @@
+/* Ajout des styles pour l'affichage des instructions IA */
+.ia-title {
+	font-size: 2rem;
+	color: #333;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.ia-instructions {
+	color: #555;
+	font-size: 1rem;
+	margin-bottom: 12px;
+}
+
+.ia-anglais {
+	color: #d32f2f;
+	font-weight: bold;
+}
+
+.ia-exemples {
+	font-size: 0.95rem;
+	color: #888;
+}
 
 body {
 	font-family: Arial, sans-serif;
