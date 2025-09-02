@@ -1,31 +1,51 @@
-# Rapport – IA pour le Web
+# 01 – Intelligence Artificielle pour le Web  
 
-## 1. Technologie ou API IA utilisée
+## Présentation  
+Ce projet consiste à réaliser une **page web interactive intégrant une intelligence artificielle légère** afin d’enrichir l’expérience utilisateur.  
+J’ai choisi d’utiliser **TensorFlow.js** avec le modèle pré-entraîné **toxicity**, qui permet d’analyser un texte et de détecter les propos toxiques (insultes, menaces, discours haineux, etc.).  
 
-J’ai choisi d’utiliser **TensorFlow.js**, une bibliothèque JavaScript permettant d’intégrer des modèles d’intelligence artificielle directement dans le navigateur. J'ai choisi le modèle pré-entraîné **toxicity** pour analyser le texte et détecter les propos toxiques (insultes, menaces, etc.)
+---
 
-## 2. Choix d’intégration dans la page web
+## 1. Technologie ou API IA utilisée  
+J’ai utilisé **TensorFlow.js**, une bibliothèque JavaScript permettant d’exécuter des modèles d’intelligence artificielle directement dans le navigateur.  
+Le modèle choisi est **toxicity**, déjà entraîné, qui évalue la toxicité d’un texte et renvoie différentes catégories de classification avec leurs scores.  
 
-- L’intégration est 100% côté client : l’utilisateur saisit un texte en anglais dans un formulaire.
-- Le modèle “toxicity” analyse le texte et affiche dynamiquement les résultats (tags détectés, conseils, affichage visuel).
-- L’interface est simple, responsive et accessible sur desktop/mobile.
+---
 
-Ce choix garantit la confidentialité des données (rien n’est envoyé sur un serveur) et simplifie le déploiement.
+## 2. Choix d’intégration dans la page web  
+- L’intégration est **100 % côté client** : l’utilisateur saisit une phrase en anglais dans un formulaire.  
+- Le modèle “toxicity” analyse le texte et affiche dynamiquement les résultats (catégories détectées, scores et conseils).  
+- L’interface est volontairement **simple, responsive et accessible** (desktop/mobile).  
+- Ce choix permet de garantir la **confidentialité des données** (aucune donnée envoyée sur un serveur externe) et de simplifier le déploiement.  
 
-## 3. Difficultés rencontrées et solutions adoptées
+---
 
-- **Idée de projet** : Difficile au départ de trouver une idée pertinente et réalisable avec TensorFlow.js.
-- **Modèles disponibles** : Beaucoup de modèles sont orientés image ou complexes à intégrer.
-- **Langue** : Le modèle “toxicity” fonctionne surtout en anglais, ce qui limite l’analyse pour le français.
-- **Solution** : Choix du modèle “toxicity” car il est bien documenté, facile à intégrer et adapté à une démo IA simple, idéal pour un sujet de rattrapages.
+## 3. Difficultés rencontrées et solutions adoptées  
+- **Choix du modèle** : difficile de trouver une idée pertinente et réalisable rapidement. Solution : sélection du modèle “toxicity” car il est léger, documenté et adapté à une démonstration simple.  
+- **Langue** : le modèle est entraîné principalement sur des données en anglais. Solution : imposer l’analyse en anglais afin d’obtenir des résultats fiables.  
+- **Performances** : le chargement du modèle peut être un peu long. Solution : ajout d’un état “chargement” et gestion des erreurs (réseau/API) pour informer l’utilisateur.  
 
-## 4. Réflexion sur l’impact de l’IA sur l’expérience utilisateur
+---
 
-L’intégration d’une IA côté client enrichit l’expérience utilisateur :
+## 4. Réflexion sur l’impact de l’IA sur l’expérience utilisateur  
+L’intégration d’une IA comme **toxicity** apporte une valeur ajoutée immédiate :  
+- Retour en temps réel sur le contenu saisi.  
+- Sensibilisation à la qualité du langage et encouragement à adopter un ton plus respectueux.  
+- Expérience interactive, ludique et pédagogique.  
 
-- Retour immédiat sur le contenu saisi (détection de propos toxiques).
-- Sensibilisation à la qualité du langage et encouragement à des échanges plus respectueux.
-- Amélioration de l’interactivité et de la personnalisation, tout en restant vigilant sur les limites (langue, précision du modèle).
+Néanmoins, il faut rester conscient des **limites** :  
+- Le modèle n’est pas aussi performant en français.  
+- Certaines phrases ambiguës peuvent être mal interprétées.  
 
+L’IA doit donc être perçue comme un **outil d’assistance** qui accompagne l’utilisateur, et non comme une vérité absolue.  
 
-Kevin LABATTE
+---
+
+## Démo  
+mettre la video si possible ici
+  
+
+---
+
+## Auteur  
+**Kevin Labatte**  
