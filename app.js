@@ -53,28 +53,39 @@ document.addEventListener("DOMContentLoaded", () => {
 					if (tags.includes("identity_attack")) advice += "Respectez l'identité des autres. ";
 					if (tags.includes("sexual_explicit")) advice += "Le contenu explicite n'est pas approprié ici. ";
 					if (tags.includes("obscene")) advice += "Le langage obscène n'est pas autorisé. ";
-					// Affichage visuel amélioré
+					// Affichage visuel amélioré avec classes CSS
 					result.innerHTML = `
-						<div style='background:#ffeaea;border:2px solid #d32f2f;padding:16px;border-radius:8px;'>
-							<div style='margin-bottom:8px;'>
-								${tags.map(t=>`<span style='display:inline-block;background:#d32f2f;color:#fff;padding:4px 10px;border-radius:12px;margin-right:6px;font-size:1rem;'>${icons[t]||"❗"} ${t.replace(/_/g,' ')}</span>`).join(' ')}
+						<div class="result-toxic">
+							<div class="toxic-tags">
+								${tags.map(t=>`<span class="toxic-tag">${icons[t]||"❗"} ${t.replace(/_/g,' ')}</span>`).join(' ')}
 							</div>
-							<div style='font-weight:bold;color:#d32f2f;margin-bottom:8px;'>Toxicité détectée !</div>
-							<div style='color:#333;margin-bottom:8px;'>${advice}</div>
+							<div class="toxic-title">Toxicité détectée !</div>
+							<div class="toxic-advice">${advice}</div>
 						</div>
 					`;
 				} else {
 					result.innerHTML = `
-						<div style='background:#eafbe7;border:2px solid #388e3c;padding:16px;border-radius:8px;'>
-							<span style='color:#388e3c;font-weight:bold;font-size:1.1rem;'>✅ Aucune toxicité détectée.</span>
+						<div class="result-safe">
+							<span class="safe-message">✅ Aucune toxicité détectée.</span>
 						</div>
 					`;
 				}
 			}).catch(err => {
-				result.textContent = `Langue détectée : ${language}\nErreur d'analyse Toxicity.`;
+				console.error("Erreur d'analyse Toxicity:", err);
+				result.innerHTML = `
+					<div class="result-toxic">
+						<div class="toxic-title">Erreur d'analyse</div>
+						<div class="toxic-advice">Une erreur s'est produite lors de l'analyse. Veuillez réessayer.</div>
+					</div>
+				`;
 			});
 		} else {
-			result.textContent = `Langue détectée : ${language}\nModèle Toxicity non chargé.`;
+			result.innerHTML = `
+				<div class="result-toxic">
+					<div class="toxic-title">Modèle non chargé</div>
+					<div class="toxic-advice">Le modèle d'analyse n'est pas encore chargé. Veuillez patienter et réessayer.</div>
+				</div>
+			`;
 		}
 	});
 });
