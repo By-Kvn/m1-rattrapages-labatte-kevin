@@ -1,4 +1,5 @@
 # 01 – Intelligence Artificielle pour le Web RAPPORT  | TOXICITY
+lien : https://m1-rattrapages-labatte-kevin.vercel.app/
 
 ## Présentation  
 Ce projet est une application d'analyse de toxicité de texte utilisant l'intelligence artificielle.
