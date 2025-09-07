@@ -44,6 +44,8 @@ L’IA doit donc être perçue comme un **outil d’assistance** qui accompagne 
 
 ## Démo  
 VIDEO DEMO : 
+- https://youtu.be/tap4JF9te1k
+
 - https://github.com/By-Kvn/m1-rattrapages-labatte-kevin/releases/download/v1.0.0/Toxicity-demo.mov
   
 
