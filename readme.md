@@ -1,4 +1,4 @@
-# 01 – Intelligence Artificielle pour le Web  
+# 01 – Intelligence Artificielle pour le Web  | TOXICITY
 
 ## Présentation  
 Ce projet consiste à réaliser une **page web interactive intégrant une intelligence artificielle légère** afin d’enrichir l’expérience utilisateur.  
@@ -21,9 +21,9 @@ Le modèle choisi est **toxicity**, déjà entraîné, qui évalue la toxicité 
 ---
 
 ## 3. Difficultés rencontrées et solutions adoptées  
-- **Choix du modèle** : difficile de trouver une idée pertinente et réalisable rapidement. Solution : sélection du modèle “toxicity” car il est léger, documenté et adapté à une démonstration simple.  
-- **Langue** : le modèle est entraîné principalement sur des données en anglais. Solution : imposer l’analyse en anglais afin d’obtenir des résultats fiables.  
-- **Performances** : le chargement du modèle peut être un peu long. Solution : ajout d’un état “chargement” et gestion des erreurs (réseau/API) pour informer l’utilisateur.  
+- **Choix du modèle** : Il m'étais difficile de trouver une idée pertinente et réalisable rapidement donc la solution -> : sélection du modèle “toxicity” car il est léger, documenté et adapté pour un rendu comme celui-ci.  
+- **Langue** : le modèle est entraîné principalement sur des données en anglais donc j'ai du imposer/restreindre l’analyse en anglais afin d’obtenir des résultats fiables.  
+- **Performances** : le chargement du modèle peut être un peu long, j'ai ajouté pour cela d’un état “chargement” et gestion des erreurs (réseau/API) pour informer l’utilisateur.  
 
 ---
 
@@ -42,7 +42,8 @@ L’IA doit donc être perçue comme un **outil d’assistance** qui accompagne 
 ---
 
 ## Démo  
-mettre la video si possible ici
+VIDEO DEMO : 
+- https://github.com/By-Kvn/m1-rattrapages-labatte-kevin/releases/download/v1.0.0/Toxicity-demo.mov
   
 
 ---
