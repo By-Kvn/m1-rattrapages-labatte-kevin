@@ -1,7 +1,7 @@
-# 01 – Intelligence Artificielle pour le Web  | TOXICITY
+# 01 – Intelligence Artificielle pour le Web RAPPORT  | TOXICITY
 
 ## Présentation  
-Ce projet consiste à réaliser une **page web interactive intégrant une intelligence artificielle légère** afin d’enrichir l’expérience utilisateur.  
+Ce projet est une application d'analyse de toxicité de texte utilisant l'intelligence artificielle.
 J’ai choisi d’utiliser **TensorFlow.js** avec le modèle pré-entraîné **toxicity**, qui permet d’analyser un texte et de détecter les propos toxiques (insultes, menaces, discours haineux, etc.).  
 
 ---
