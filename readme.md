@@ -42,6 +42,11 @@ L’IA doit donc être perçue comme un **outil d’assistance** qui accompagne 
 
 ---
 
+## BliBlio
+
+- https://www.tensorflow.org/js/tutorials?hl=fr
+- https://www.kaggle.com/models/tensorflow/toxicity
+
 ## Démo  
 VIDEO DEMO : 
 - https://youtu.be/tap4JF9te1k
